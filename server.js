@@ -50,8 +50,8 @@ app.get('/:dateString', function(req, res) {
   }
   else if (Number.isInteger(parseInt(testVar))){
     outputObj = {
-      'unix': parseInt(testVar)/1000,
-      'natural': new Date(testVar)
+      'unix': parseInt(testVar),
+      'natural': new Date(testVar*1000)
     }
   }
   else{
