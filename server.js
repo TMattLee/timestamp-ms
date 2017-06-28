@@ -49,10 +49,18 @@ app.get('/:dateString', function(req, res) {
     }
   }
   else if (Number.isInteger(parseInt(testVar))){
-    var newDate = new Date(testVar*1000)
+    var monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+    var newDate = new Date(testVar*1000);
+    var dateISO = newDate.toISOString().slice(0,10);
+    var dateArr = dateISO.split('-');
     outputObj = {
       'unix': parseInt(testVar),
-      'natural': newDate.getMonth + ' ' + newDate.getDate + ', ' + newDate.getFullYear
+      'natural': monthNames[parseInt(dateArr[1])] + ' ' + dateArr[2] + ', ' + dateArr[0]
     }
   }
   else{
