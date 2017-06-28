@@ -48,7 +48,7 @@ app.get('/:dateString', function(req, res) {
       'natural': testVar
     }
   }
-  else if (Number.isInteger(parseInt(testVar))){
+  else if (Number.isInteger(parseInt(testVar)) && !isNaN(testVar)){
     var monthNames = [
       "January", "February", "March",
       "April", "May", "June", "July",
@@ -56,11 +56,11 @@ app.get('/:dateString', function(req, res) {
       "November", "December"
     ];
     var newDate = new Date(testVar*1000);
-    var dateISO = newDate.toISOString().slice(0,10);
+    var dateISO = newDate.toISOString();
     var dateArr = dateISO.split('-');
     outputObj = {
       'unix': parseInt(testVar),
-      'natural': monthNames[parseInt(dateArr[1])] + ' ' + dateArr[2] + ', ' + dateArr[0]
+      'natural': monthNames[parseInt(dateArr[1])] + ' ' + parseInt(dateArr[2].slice(0,2)) + ', ' + dateArr[0]
     }
   }
   else{
