@@ -54,7 +54,7 @@ app.get('/:dateString', function(req, res) {
     var dateArr = dateISO.split('-');
     outputObj = {
       'unix': parseInt(testVar),
-      'natural': monthNames[parseInt(dateArr[1])] + ' ' + parseInt(dateArr[2].slice(0,2)) + ', ' + parseInt(dateArr[0])
+      'natural': monthNames[parseInt(dateArr[1])-1] + ' ' + parseInt(dateArr[2].slice(0,2)) + ', ' + parseInt(dateArr[0])
     }
   }
   else if(Number.isInteger(testDate)){
