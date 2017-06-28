@@ -40,7 +40,7 @@ app.route('/')
     
 app.get('/:dateString', function(req, res) {
   var testVar = req.params.dateString;
-  var testDate = Date.parse(testVar);
+  var testDate = Date.parse(testVar)/1000;
   var outputObj = {};
   if(Number.isInteger(testDate)){
     outputObj = {
@@ -50,7 +50,7 @@ app.get('/:dateString', function(req, res) {
   }
   else if (Number.isInteger(parseInt(testVar))){
     outputObj = {
-      'unix': parseInt(testVar),
+      'unix': parseInt(testVar)/1000,
       'natural': new Date(testVar)
     }
   }
