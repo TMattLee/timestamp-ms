@@ -39,7 +39,28 @@ app.route('/')
     })
     
 app.get('/:dateString', function(req, res) {
-  res.send("tagId is set to " + req.params.tagId);
+  var testVar = req.params.dateString;
+  var testDate = Date.parse(testVar);
+  var outputObj = {};
+  if(Number.isInteger(testDate)){
+    outputObj = {
+      'unix': testDate,
+      'natural': testVar
+    }
+  }
+  else if (Number.isInteger(parseInt(testVar))){
+    outputObj = {
+      'unix': parseInt(testVar),
+      'natural': new Date(testVar)
+    }
+  }
+  else{
+    outputObj = {
+      'unix': null,
+      'natural': null
+    }
+  }
+  res.send(outputObj);
 });
 
 // Respond not found to all the wrong routes
