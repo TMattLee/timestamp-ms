@@ -49,9 +49,10 @@ app.get('/:dateString', function(req, res) {
     }
   }
   else if (Number.isInteger(parseInt(testVar))){
+    var newDate = new Date(testVar*1000)
     outputObj = {
       'unix': parseInt(testVar),
-      'natural': new Date(testVar*1000)
+      'natural': newDate.getMonth + ' ' + newDate.getDate + ', ' + newDate.getFullYear
     }
   }
   else{
