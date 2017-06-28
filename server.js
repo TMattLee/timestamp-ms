@@ -37,6 +37,10 @@ app.route('/')
     .get(function(req, res) {
 		  res.sendFile(process.cwd() + '/views/index.html');
     })
+    
+app.get('/:dateString', function(req, res) {
+  res.send("tagId is set to " + req.params.tagId);
+});
 
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
